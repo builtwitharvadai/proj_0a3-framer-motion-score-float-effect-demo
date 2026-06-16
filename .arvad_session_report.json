@@ -1,34 +1,23 @@
 {
-  "files_created": [
-    "src/App.module.css",
-    "src/App.tsx",
-    "src/main.tsx",
-    "src/index.css"
-  ],
-  "files_modified": [
-    "src/main.tsx"
-  ],
+  "files_created": ["CONTRIBUTING.md"],
+  "files_modified": ["README.md"],
   "decisions": [
     {
-      "what": "Used template literal for unique animation id combining Date.now() and Math.random().toString()",
-      "why": "Specification requires unique IDs for React key tracking and combining timestamp with random value ensures uniqueness even for rapid concurrent spawns."
+      "what": "Preserved existing README sections (Overview, Technology Stack, Getting Started, Project Structure, Available Scripts, Deployment, License) and inserted the new sections (Component API, Customization Examples, Architecture, Performance, Browser Compatibility, Troubleshooting, Advanced Usage, Demo).",
+      "why": "Spec explicitly says to keep existing sections and add the new ones."
     },
     {
-      "what": "Used slice(-10) on the animations array to cap concurrent animations to 10",
-      "why": "Specification requires limiting to a maximum of 10 concurrent animations; slicing keeps the most recent 10 entries."
+      "what": "Sourced the Component API prop types and defaults directly from src/types/animation.ts and src/components/FloatingScore.tsx (DEFAULT_DURATION=1.8, DEFAULT_DISTANCE=100).",
+      "why": "Documentation must match the real implementation to be accurate and useful."
     },
     {
-      "what": "Imported only useState from react in App.tsx (omitted useRef)",
-      "why": "Specification mentions useRef in the import description but the described logic does not use a ref; importing an unused symbol would violate the project's eslint no-unused-vars rules."
+      "what": "Embedded the exact Unsplash URL from the spec as the visual example in the Demo section, and noted that the live GitHub Pages URL is a placeholder.",
+      "why": "Spec listed both the placeholder text and the exact image URL to include."
     },
     {
-      "what": "Placed './index.css' import as the first line of main.tsx",
-      "why": "Specification 005 explicitly requires the global styles import to be at the top, before other imports, so styles load before component-specific styles."
+      "what": "Created CONTRIBUTING.md with the eight required sections (Development Setup, Code Style, Commit Conventions, Pull Request Process, Project Structure, Adding New Features, Code of Conduct) plus a brief opening paragraph.",
+      "why": "Spec enumerated the required sections explicitly; opening paragraph improves readability without exceeding scope."
     }
   ],
-  "tools_used": [
-    "Read",
-    "Write",
-    "Edit"
-  ]
+  "tools_used": ["Read", "Write"]
 }
