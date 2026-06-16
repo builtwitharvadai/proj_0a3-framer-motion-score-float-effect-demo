@@ -1,0 +1,21 @@
+.floatingScore {
+  position: absolute;
+  font-size: 28px;
+  font-weight: 700;
+  color: #10b981;
+  text-shadow: 0 2px 8px rgba(16, 185, 129, 0.5);
+  pointer-events: none;
+  user-select: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  will-change: transform, opacity;
+}
+
+.positive {
+  color: #10b981;
+  text-shadow: 0 2px 8px rgba(16, 185, 129, 0.5);
+}
+
+.negative {
+  color: #ef4444;
+  text-shadow: 0 2px 8px rgba(239, 68, 68, 0.5);
+}
