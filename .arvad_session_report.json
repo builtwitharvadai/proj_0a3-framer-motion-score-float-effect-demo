@@ -1,0 +1,44 @@
+{
+  "files_created": [
+    "package.json",
+    "tsconfig.json",
+    "vite.config.ts",
+    ".eslintrc.cjs",
+    ".prettierrc",
+    ".env.example",
+    "public/vite.svg",
+    "index.html"
+  ],
+  "files_modified": [
+    ".gitignore",
+    "README.md"
+  ],
+  "decisions": [
+    {
+      "what": "Replaced the existing Python-focused .gitignore with a Node.js/React-focused one and preserved the existing 'arvad_task_files/' entry.",
+      "why": "Spec 001 calls for a Node/React/Vite gitignore; keeping the arvad_task_files exclusion avoids accidentally committing task scaffolding."
+    },
+    {
+      "what": "Added @types/react and @types/react-dom to devDependencies in package.json (not explicitly listed in the spec).",
+      "why": "tsconfig.json enables strict TypeScript compilation with jsx 'react-jsx'; without the React type packages, 'tsc' (called from the build script) would fail with missing-module errors and the build pipeline would not be deployable."
+    },
+    {
+      "what": "Set base path in vite.config.ts via process.env.NODE_ENV check exactly as the spec stipulates, with an inline comment explaining the GitHub Pages naming requirement.",
+      "why": "Spec 004 requires the conditional base path and an explanatory comment so future contributors understand why the path must match the GitHub repo name."
+    },
+    {
+      "what": "Rewrote README.md with the full set of sections requested in spec 008 (Overview, Tech Stack, Getting Started, Project Structure, Scripts, Deployment, License).",
+      "why": "Spec 008 explicitly lists README.md as one of the 10 sequenced code-change targets, so it takes precedence over the generic 'no markdown files' guideline which is meant to prevent unsolicited docs."
+    },
+    {
+      "what": "Used the official Vite template SVG for public/vite.svg with viewBox 0 0 410 404.",
+      "why": "Spec 009 calls for the standard Vite logo asset from the official template, used as favicon by index.html."
+    }
+  ],
+  "tools_used": [
+    "Read",
+    "Write",
+    "Bash",
+    "ToolSearch"
+  ]
+}
