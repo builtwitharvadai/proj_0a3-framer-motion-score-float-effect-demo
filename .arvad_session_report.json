@@ -1,32 +1,34 @@
 {
   "files_created": [
-    "src/types/animation.ts",
-    "src/components/FloatingScore.module.css",
-    "src/components/FloatingScore.tsx",
-    "src/components/index.ts"
+    "src/App.module.css",
+    "src/App.tsx",
+    "src/main.tsx",
+    "src/index.css"
   ],
-  "files_modified": [],
+  "files_modified": [
+    "src/main.tsx"
+  ],
   "decisions": [
     {
-      "what": "Used type-only re-export (export type { FloatingScoreProps }) in FloatingScore.tsx and components/index.ts.",
-      "why": "tsconfig has isolatedModules: true which requires type-only exports for re-exported interfaces."
+      "what": "Used template literal for unique animation id combining Date.now() and Math.random().toString()",
+      "why": "Specification requires unique IDs for React key tracking and combining timestamp with random value ensures uniqueness even for rapid concurrent spawns."
     },
     {
-      "what": "Used window.setTimeout / window.clearTimeout inside useEffect with onComplete guard.",
-      "why": "Browser timer typing returns number, and cleanup must run on unmount or dependency change to prevent calling onComplete after the component has been removed."
+      "what": "Used slice(-10) on the animations array to cap concurrent animations to 10",
+      "why": "Specification requires limiting to a maximum of 10 concurrent animations; slicing keeps the most recent 10 entries."
     },
     {
-      "what": "Treated value >= 0 as positive (rendered with '+' prefix and styles.positive).",
-      "why": "Spec says '+ prefix for positive numbers' and positive class for green; zero is mapped to positive styling as the simplest non-ambiguous default."
+      "what": "Imported only useState from react in App.tsx (omitted useRef)",
+      "why": "Specification mentions useRef in the import description but the described logic does not use a ref; importing an unused symbol would violate the project's eslint no-unused-vars rules."
     },
     {
-      "what": "Set will-change: transform, opacity (comma-separated).",
-      "why": "CSS will-change syntax requires comma-separated values; the spec wording 'transform opacity' is interpreted as both properties."
+      "what": "Placed './index.css' import as the first line of main.tsx",
+      "why": "Specification 005 explicitly requires the global styles import to be at the top, before other imports, so styles load before component-specific styles."
     }
   ],
   "tools_used": [
     "Read",
     "Write",
-    "Bash"
+    "Edit"
   ]
 }
